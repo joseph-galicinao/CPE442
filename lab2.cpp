@@ -5,9 +5,21 @@ using namespace cv;
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    Mat image = imread(argv[1]);
-    imshow("Image", image);
+    if (argc == 2) {
+        Mat image = imread(argv[1]);
+        
+        if (image.empty()) {
+            std::cout << "Image does not exist\n";
+            return -1;
+        }
 
-    waitKey(0);
-    return 0;
+        imshow("Image", image);
+
+        waitKey(0);
+        return 0;
+    }
+    else {
+        std::cout << "Invalid input\n";
+        return -1;
+    }
 }
